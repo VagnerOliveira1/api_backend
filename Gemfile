@@ -21,6 +21,9 @@ gem 'inky-rb', require: 'inky'
 gem 'premailer-rails'
 gem 'sass-rails'
 
+#Rendering
+gem 'jbuilder', '~> 2.10.1'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 4.0.1'
