@@ -8,7 +8,7 @@ class SystemRequirement < ApplicationRecord
 
   has_many :games, dependent: :restrict_with_error
 
-  include NameSearchable
+  include LikeSearchable
   include Paginatable
 end
 
