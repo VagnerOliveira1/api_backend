@@ -13,7 +13,7 @@ describe Admin::ModelLoadingService do
         system_requirements
       end
 
-      let!(:unenexpected_system_requirements) do
+      let!(:unexpected_system_requirements) do
         system_requirements = []
         15.times do |n|
           system_requirements << create(:system_requirement, name: "Search #{n + 16}")
@@ -22,7 +22,7 @@ describe Admin::ModelLoadingService do
       end
 
       let(:params) do
-        { search: { name: "Search", video_board:"GeForce"}, order: { name: :desc }, page: 2, length: 4 }
+        { search: { name: "Search", video_board: "GeFor" }, order: { name: :desc }, page: 2, length: 4 }
       end
 
       it "performs right :length following pagination" do
@@ -64,12 +64,11 @@ describe Admin::ModelLoadingService do
       end
 
       it "does not return unenexpected records" do
-        params.merge!(page: 1, length: 50 )
+        params.merge!(page: 1, length: 50)
         service = described_class.new(SystemRequirement.all, params)
         service.call
-        expect(service.records).to_not include *unenexpected_system_requirements
+        expect(service.records).to_not include *unexpected_system_requirements
       end
-
     end
 
     context "when params are not present" do

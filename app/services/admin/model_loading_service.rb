@@ -6,7 +6,7 @@ module Admin
       @searchable_model = searchable_model
       @params = params || {}
       @records = []
-      @pagination = {}
+      @pagination = { page: @params[:page].to_i, length: @params[:length].to_i }
     end
 
     def call
